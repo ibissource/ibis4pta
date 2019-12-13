@@ -1,0 +1,10 @@
+<!DOCTYPE configuration [
+	<!ENTITY CollectStatistics SYSTEM "ConfigurationCollectStatistics.xml">
+]>
+<configuration name="Ibis4Pta">
+	<jmsRealms>
+		<jmsRealm realmName="jdbc" datasourceName="jdbc/${instance.name.lc}"/>
+		<!-- jmsRealm realmName="qcf" queueConnectionFactoryName="jms/qcf"/ -->
+	</jmsRealms>
+	&CollectStatistics;
+</configuration>

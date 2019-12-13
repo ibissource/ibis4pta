@@ -1,0 +1,72 @@
+<module>
+	<adapter name="CollectStatistics">
+		<receiver className="nl.nn.adapterframework.receivers.GenericReceiver" 
+			name="CollectStatistics"
+			onError="close">
+			<listener className="nl.nn.adapterframework.receivers.DirectoryListener" 
+				root="${CollectStatistics.rootFolder}"
+				inputFolder="${CollectStatistics.inputFolder}"
+				processedFolder="${CollectStatistics.processedFolder}"
+				errorFolder="${CollectStatistics.errorFolder}"
+				overwrite="true"
+			/>
+		</receiver>
+		<pipeline>
+			<exits>
+				<exit path="EXIT" state="success"/>
+			</exits>
+			<pipe
+				name="FileExists"
+				className="nl.nn.adapterframework.pipes.LocalFileSystemPipe"
+				action="info"
+				filename="${CollectStatistics.outputFile}"
+				>
+				<forward name="success" path="FileInfo" />			<!-- when file exists, no header needs to be written, skip to processing of file -->
+				<forward name="exception" path="CreateHeader" /> 	<!-- file not found will result in an exception, then first a header is created -->
+			</pipe>
+			<pipe
+				name="CreateHeader"
+				className="nl.nn.adapterframework.pipes.FixedResult"
+				fileName="CollectStatistics/header.csv"
+			/>
+			<pipe
+				name="WriteHeader"
+				className="nl.nn.adapterframework.pipes.LocalFileSystemPipe"
+				action="write"
+				filename="${CollectStatistics.outputFile}"
+			/>
+			<pipe
+				name="FileInfo"
+				className="nl.nn.adapterframework.pipes.LocalFileSystemPipe"
+				action="info"
+				getInputFromSessionKey="originalMessage"
+				storeResultInSessionKey="fileInfo"
+			/>
+			<pipe
+				name="ReadFile"
+				className="nl.nn.adapterframework.pipes.FilePipe"
+				actions="read"
+				getInputFromSessionKey="originalMessage"
+			/>
+			<pipe
+				name="transform"
+				className="nl.nn.adapterframework.pipes.JsonXsltPipe"
+				styleSheetName="CollectStatistics/jsonStatisticsToCsv.xslt"
+				jsonResult="false"
+				outputType="text"
+			>
+				<param name="filename" sessionKey="fileInfo" xpathExpression="file/@name"/>
+				<param name="fileTime" sessionKey="fileInfo" xpathExpression="concat(file/@modificationDate,' ',file/@modificationTime)"/>
+			</pipe>	
+			<pipe
+				name="write"
+				className="nl.nn.adapterframework.pipes.LocalFileSystemPipe"
+				action="append"
+				filename="${CollectStatistics.outputFile}"
+			>
+ 				<forward name="success" path="EXIT"/>
+			</pipe>
+		</pipeline>
+	</adapter>	
+
+</module>

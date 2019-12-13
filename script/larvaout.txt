@@ -1,0 +1,357 @@
+
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<!--force IE7 into quirks mode-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+	<head>
+		<title>Larva Test Tool</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<link rel="stylesheet" type="text/css" href="assets/style.css"/>
+		<script type="text/javascript" src="assets/lib.js"></script>
+	</head>
+
+	<body>
+
+<form action="index.jsp" method="post">
+<table>
+<tr>
+<td>Scenario(s)</td>
+</tr>
+<tr>
+<td>
+<select name="execute">
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pt">t</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\">ta\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\">ta\script\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\">ta\script\..\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\">ta\script\..\..\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\">ta\script\..\..\ibis4gerrit\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\">ta\script\..\..\ibis4gerrit\src\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\">ta\script\..\..\ibis4gerrit\src\test\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\">ta\script\..\..\ibis4gerrit\src\test\testtool\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\">ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01.properties">ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - XsltPipe scenario GenericFunctions</option>
+</select>
+</td>
+</tr>
+</table>
+<table align="left">
+<tr>
+<td>Scenarios root directory</td>
+</tr>
+<tr>
+<td>
+<select name="scenariosrootdirectory">
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\resources\TestTool\">Gerrits workspace 1</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\testtool\">Gerrits workspace 2</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\testtool\">Tomcat4Ibis</option>
+<option value="C:\Gerrit\Workspaces\eclipse\tomcat4ibis\build\apache-tomcat-7.0.96\webapps\ibis\larva\src\test\resources\TestTool\">X Eclipse Maven project</option>
+<option value="C:\Gerrit\Workspaces\eclipse\tomcat4ibis\build\src\test\resources\TestTool\">X Jetty Maven Plugin</option>
+</select>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Wait before clean up (ms)</td>
+</tr>
+<tr>
+<td>
+<input type="text" name="waitbeforecleanup" value="100">
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Log level</td>
+</tr>
+<tr>
+<td>
+<select name="loglevel">
+<option value="debug">debug</option>
+<option value="pipeline messages prepared for diff">pipeline messages prepared for diff</option>
+<option value="pipeline messages">pipeline messages</option>
+<option value="wrong pipeline messages prepared for diff">wrong pipeline messages prepared for diff</option>
+<option value="wrong pipeline messages" selected>wrong pipeline messages</option>
+<option value="step passed/failed">step passed/failed</option>
+<option value="scenario passed/failed">scenario passed/failed</option>
+<option value="scenario failed">scenario failed</option>
+<option value="totals">totals</option>
+<option value="error">error</option>
+</select>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Auto scroll</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="autoscroll" value="true"
+ checked
+>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td align="right">
+<input type="submit" name="submit" value="start">
+</td>
+</tr>
+</table>
+</form>
+<br clear="all"/>
+<br/>
+<br/>
+<div class='scenario'>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step1.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step2.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step3.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step4.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step5.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step6.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step7.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step8.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step9.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step10.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step11.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step12.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step13.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step14.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step15.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step16.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step17.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step18.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='odd'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step19.java.XsltPipe.write - scenario01/in.xml&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<div class='even'>
+<h3 class='passed'>Step &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - step20.java.XsltPipe.read - scenario01/out.txt&#39; passed</h3>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<h2 class='passed'>Scenario &#39;ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - XsltPipe scenario GenericFunctions&#39; passed (0/1/1)</h2>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+</div>
+<br/>
+<br/>
+<h1 class='passed'>All scenarios passed (1 scenario executed in 1128 ms)</h1>
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+<br/>
+<br/>
+<form action="index.jsp" method="post">
+<table>
+<tr>
+<td>Scenario(s)</td>
+</tr>
+<tr>
+<td>
+<select name="execute">
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pt">t</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\">ta\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\">ta\script\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\">ta\script\..\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\">ta\script\..\..\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\">ta\script\..\..\ibis4gerrit\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\">ta\script\..\..\ibis4gerrit\src\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\">ta\script\..\..\ibis4gerrit\src\test\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\">ta\script\..\..\ibis4gerrit\src\test\testtool\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\">ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4pta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01.properties">ta\script\..\..\ibis4gerrit\src\test\testtool\XsltPerfTest\scenario01 - XsltPipe scenario GenericFunctions</option>
+</select>
+</td>
+</tr>
+</table>
+<table align="left">
+<tr>
+<td>Scenarios root directory</td>
+</tr>
+<tr>
+<td>
+<select name="scenariosrootdirectory">
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\resources\TestTool\">Gerrits workspace 1</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\testtool\">Gerrits workspace 2</option>
+<option value="C:\Gerrit\Workspaces\eclipse\ibis4gerrit\src\test\testtool\">Tomcat4Ibis</option>
+<option value="C:\Gerrit\Workspaces\eclipse\tomcat4ibis\build\apache-tomcat-7.0.96\webapps\ibis\larva\src\test\resources\TestTool\">X Eclipse Maven project</option>
+<option value="C:\Gerrit\Workspaces\eclipse\tomcat4ibis\build\src\test\resources\TestTool\">X Jetty Maven Plugin</option>
+</select>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Wait before clean up (ms)</td>
+</tr>
+<tr>
+<td>
+<input type="text" name="waitbeforecleanup" value="100">
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Log level</td>
+</tr>
+<tr>
+<td>
+<select name="loglevel">
+<option value="debug">debug</option>
+<option value="pipeline messages prepared for diff">pipeline messages prepared for diff</option>
+<option value="pipeline messages">pipeline messages</option>
+<option value="wrong pipeline messages prepared for diff">wrong pipeline messages prepared for diff</option>
+<option value="wrong pipeline messages" selected>wrong pipeline messages</option>
+<option value="step passed/failed">step passed/failed</option>
+<option value="scenario passed/failed">scenario passed/failed</option>
+<option value="scenario failed">scenario failed</option>
+<option value="totals">totals</option>
+<option value="error">error</option>
+</select>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>Auto scroll</td>
+</tr>
+<tr>
+<td>
+<input type="checkbox" name="autoscroll" value="true"
+ checked
+>
+</td>
+</tr>
+</table>
+<span style="float: left; font-size: 10pt; width: 0px">&nbsp; &nbsp; &nbsp;</span>
+<table align="left">
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td align="right">
+<input type="submit" name="submit" value="start">
+</td>
+</tr>
+</table>
+</form>
+<br clear="all"/>
+
+<script type="text/javascript"><!--
+scrollToBottom();
+--></script>
+
+
+	</body>
+</html>
