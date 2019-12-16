@@ -40,7 +40,7 @@
 	<xsl:param name="ibisVersion"/>
 	<xsl:param name="adapter"/>
 	<xsl:param name="object"/>
-	<xsl:variable name="name" select="concat(translate(substring(@key,1,1),'-=','__'),substring(@key,2))" />
+	<xsl:variable name="name" select="concat(translate(substring(@key,1,1),'-=','__'),substring-before(concat(substring(@key,2),'$$'),'$$'))" />
 	<xsl:value-of select="fn:concat(
 	$fileTime,$sep,
 	$quot,$ibisVersion,$quot,$sep,
