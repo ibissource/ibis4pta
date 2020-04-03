@@ -1,6 +1,6 @@
 rem @echo off
 
-set ibisInstance=ibis4pt
+set frankInstance=ibis4pt
 rem file containing the iaf versions to be tested:
 set testVersionsFile=testversions.txt
 rem file containg all adapters for which statistics are to be collected:
@@ -19,20 +19,20 @@ set pauseBeforeShutdown=no
 
 
 
-set tomcat4ibis_dir=%workspace_dir%\tomcat4ibis
-set tomcat4ibis_start="%tomcat4ibis_dir%\tomcat4ibis.bat"
-set tomcat4ibis_stop="%tomcat4ibis_dir%\shutdown.bat"
+set frankRunner_dir=%workspace_dir%\frank-runner
+set frankRunner_start="%frankRunner_dir%\start.bat"
+set frankRunner_stop="%frankRunner_dir%\stop.bat"
 rem setting application server type is required for versions 7.5-20191204.142425 .. 7.5-20191209.181404
-set tomcat4ibis_options=-Dapplication.server.type=TOMCAT -Dtesttool.enabled=false -Dlog.level=INFO
+set frankRunner_options=-Dapplication.server.type=TOMCAT -Dtesttool.enabled=false -Dlog.level=INFO
 
-rem The following settings have appropriate values when using tomcat4ibis
-rem location where ibis under test can be reached 
-set ibis_url=http://localhost/ibis
+rem The following settings have appropriate values when using frank!Runner
+rem location where frank under test can be reached 
+set frank_url=http://localhost
 rem location where larva of ibis under test can be reached
-set larva_url=%ibis_url%/larva/index.jsp
+set larva_url=%frank_url%/larva/index.jsp
 rem output file of larva tests. The contents of the file are not used by the script
 set larva_outputfile=%workdir%\larvaout.txt
-set larva_scenariosrootdirectory=%workspace_dir%\%ibisInstance%\src\test\testtool\
+set larva_scenariosrootdirectory=%workspace_dir%\%frankInstance%\src\test\testtool\
 set larva_execute=%larva_scenariosrootdirectory%
 set larva_waitbeforecleanup=100
 
@@ -56,26 +56,26 @@ EXIT /B %ERRORLEVEL%
 rem
 rem ExecuteTestForVersion
 rem 
-rem builds ibis with specified version, executes larva tests, and collects statistics
+rem builds frank with specified version, executes larva tests, and collects statistics
 rem
 :ExecuteTestForVersion
 SETLOCAL
 
-set ibisVersion=%~1
-set logDirUnx=%logDirBaseUnx%/%ibisVersion%
-set logDirWin=%logDirBaseWin%\%ibisVersion%
+set frankVersion=%~1
+set logDirUnx=%logDirBaseUnx%/%frankVersion%
+set logDirWin=%logDirBaseWin%\%frankVersion%
 del /q %logDirWin%\*
 
-echo i=%iteration%: building %ibisInstance% with framework version %ibisVersion%
-echo i=%iteration%: call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
-call %tomcat4ibis_start% %tomcat4ibis_options% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
+echo i=%iteration%: building %frankInstance% with framework version %frankVersion%
+echo i=%iteration%: call %frankRunner_start% %frankRunner_options% -Dproject.dir=%frankInstance% -Dff.version=%frankVersion% -Dlog.dir=%logDirUnx% 
+call %frankRunner_start% %frankRunner_options% -Dff.version=%frankVersion% -Dlog.dir=%logDirUnx% 
 
 rem do a call to the console, to wait for tomcat to startup
 :WaitForTomcatReady
-echo i=%iteration%: wait for tomcat to get ready for version %ibisVersion%
+echo i=%iteration%: wait for tomcat to get ready for version %frankVersion%
 timeout /t 5
-echo i=%iteration%: testing for tomcat to be ready for version %ibisVersion%
-curl %ibis_url%
+echo i=%iteration%: testing for tomcat to be ready for version %frankVersion%
+curl %frank_url%
 if ERRORLEVEL 1 GOTO :WaitForTomcatReady
 
 if %pauseBeforeExecutingTests%==yes pause
@@ -95,8 +95,8 @@ for /f %%a IN (%adaptersFile%) DO (
 
 if %pauseBeforeShutdown%==yes pause
 
-call %tomcat4ibis_stop%
-echo i=%iteration%: waiting %tomcatShutdownWait% seconds for tomcat to shutdown version %ibisVersion%...
+call %frankRunner_stop%
+echo i=%iteration%: waiting %tomcatShutdownWait% seconds for tomcat to shutdown version %frankVersion%...
 timeout /t %tomcatShutdownWait%
 ENDLOCAL
 EXIT /B 0
@@ -104,9 +104,9 @@ EXIT /B 0
 :CollectResults
 SETLOCAL
   set adapter=%1
-  set outputfile=%outputfile_dir%\%adapter%_statistics_%ibisVersion%.json
+  set outputfile=%outputfile_dir%\%adapter%_statistics_%frankVersion%.json
   echo i=%iteration%: collect statistics for adapter %adapter%, outputfile=%outputfile%
-  curl %ibis_url%/iaf/api/adapters/%adapter%/statistics -o %outputfile%
+  curl %frank_url%/iaf/api/adapters/%adapter%/statistics -o %outputfile%
   if ERRORLEVEL 1 (
   	pause
   )
