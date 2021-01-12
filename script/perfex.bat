@@ -14,8 +14,8 @@ set logDirBaseUnx=../work/logs
 set outputfile_dir=%workdir%\Input
 set numLarvaCycles=10
 set tomcatShutdownWait=10
-set pauseBeforeExecutingTests=yes
-set pauseBeforeShutdown=yes
+set pauseBeforeExecutingTests=no
+set pauseBeforeShutdown=no
 
 
 
