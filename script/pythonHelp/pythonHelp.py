@@ -62,8 +62,10 @@ class SortableVersion:
     def getTimeStr(self):
         return self._timeStr
 
+sortableVersionKey = lambda s: (s.getMajor(), s.getMinor(), s.getKind(), s.getRc(), s.getDateStr(), s.getTimeStr())
+
 def sortSortableVersions(l):
-    return sorted(l, key=lambda s: (s.getMajor(), s.getMinor(), s.getKind(), s.getRc(), s.getDateStr(), s.getTimeStr()))
+    return sorted(l, key=sortableVersionKey)
 
 if __name__ == "__main__":
     from unittest import TestCase
