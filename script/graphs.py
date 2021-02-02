@@ -1,3 +1,10 @@
+# This script produces graphs from the output file of
+# the ibis4pta Frank config. See the global variables at
+# the top of this script for settings.
+#
+# This is a Python script that works with Python 3. Please
+# install the following before running:
+#
 # pip3 install numpy
 # pip3 install matplotlib
 
@@ -7,8 +14,13 @@ import csv
 from pythonHelp import pythonHelp
 
 fileToProcess = "../work/output.csv"
-adapter = "HandlePviewsDispatcher"
-plottedField = "p50"
+# adapter = "HandlePviewsDispatcher"
+# adapter = "HandlePViewsGetData"
+# adapter = "HandlePViewsOrchestrate"
+# adapter = "HandlePviewsStore"
+adapter = "TestXSLTPipe"
+
+plottedFields = ["min", "max", "first", "last", "p50", "stdDev"]
 
 rows = []
 with open(fileToProcess, newline="") as csvFile:
@@ -43,10 +55,17 @@ if(len(rowsOfAdapter) >= 2):
             tickLabel.append(label)
 
 x = np.arange(0, len(rowsOfAdapter))
-y = np.array([row[plottedField] for row in rowsOfAdapter])
-plt.plot(x,y)
+yraw = []
+for f in plottedFields:
+    yraw.append([float(row[f]) for row in rowsOfAdapter])
+ymax = max(max(yraw))
+for currentY in yraw:
+    y = np.array(currentY)
+    plt.plot(x,y)
+plt.legend(plottedFields)
+plt.ylim(0, ymax)
 plt.xlabel("version")
-plt.ylabel(adapter + " - " + plottedField)
+plt.ylabel(adapter)
 plt.title('Performance trend')
 plt.xticks(tickIdx, tickLabel)
 plt.grid("on")
