@@ -100,6 +100,12 @@ if %pauseBeforeShutdown%==yes pause
 call %tomcat4ibis_stop%
 echo i=%iteration%: waiting %tomcatShutdownWait% seconds for tomcat to shutdown version %ibisVersion%...
 timeout /t %tomcatShutdownWait%
+
+rem Delete database because we want to create it anew for the next F!F version
+
+del ..\..\frank-runner\ibis4pt.mv.db
+del ..\..\frank-runner\ibis4pt.trace.db
+
 ENDLOCAL
 EXIT /B 0
 
