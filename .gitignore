@@ -13,3 +13,6 @@ buildNumber.properties
 /.factorypath
 /.classpath
 /.project
+
+/target/
+/work
