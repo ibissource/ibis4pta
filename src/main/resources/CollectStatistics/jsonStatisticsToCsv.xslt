@@ -37,12 +37,12 @@ $quot,j:string[@key='error'],$quot)" />
 		</xsl:for-each>
 	</xsl:template>
 
-	<xsl:template name="writeStatistics">
-		<xsl:param name="ibisVersion" />
-		<xsl:param name="adapter" />
-		<xsl:param name="object" />
-		<xsl:variable name="name" select="concat(translate(substring(@key,1,1),'-=','__'),substring-before(concat(substring(@key,2),'$$'),'$$'))" />
-		<xsl:value-of select="fn:concat(
+<xsl:template name="writeStatistics">
+	<xsl:param name="ibisVersion" />
+	<xsl:param name="adapter" />
+	<xsl:param name="object" />
+	<xsl:variable name="name" select="concat(translate(substring(@key,1,1),'-=','__'),substring-before(concat(substring(@key,2),'$$'),'$$'))" />
+	<xsl:value-of select="fn:concat(
 $fileTime,$sep,
 $quot,$ibisVersion,$quot,$sep,
 $quot,$adapter,$quot,$sep,
@@ -61,6 +61,6 @@ j:*[@key='p90'],$sep,
 j:*[@key='p95'],$sep,
 j:*[@key='p98'])" />
 		;
-	</xsl:template>
+</xsl:template>
 
 </xsl:stylesheet>
