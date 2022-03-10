@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:j="http://www.w3.org/2013/XSL/json">
-    <xsl:output method="text" />
+  <xsl:output method="text" />
 
-    <xsl:param name="filename">TestXSLTPipe_statistics_7.5-20191001.094540.json</xsl:param>
-    <xsl:param name="fileTime">2019-12-07</xsl:param>
-    <xsl:param name="filenamePartSeparator">_statistics_</xsl:param>
-    <xsl:param name="sep">;</xsl:param>
-    <xsl:param name="quot">"</xsl:param>
+  <xsl:param name="filename">TestXSLTPipe_statistics_7.5-20191001.094540.json</xsl:param>
+  <xsl:param name="fileTime">2019-12-07</xsl:param>
+  <xsl:param name="filenamePartSeparator">_statistics_</xsl:param>
+  <xsl:param name="sep">;</xsl:param>
+  <xsl:param name="quot">"</xsl:param>
 
     <xsl:template match="/">
         <xsl:variable name="array" select="fn:tokenize($filename,$filenamePartSeparator)" />
