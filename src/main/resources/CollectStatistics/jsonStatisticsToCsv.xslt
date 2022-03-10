@@ -43,24 +43,24 @@ $quot,j:string[@key='error'],$quot)" />
 	<xsl:param name="object" />
 	<xsl:variable name="name" select="concat(translate(substring(@key,1,1),'-=','__'),substring-before(concat(substring(@key,2),'$$'),'$$'))" />
 	<xsl:value-of select="fn:concat(
-$fileTime,$sep,
-$quot,$ibisVersion,$quot,$sep,
-$quot,$adapter,$quot,$sep,
-$quot,$object,$quot,$sep,
-$quot,$name,$quot,$sep,
-j:*[@key='count'],$sep,
-j:*[@key='min'],$sep,
-j:*[@key='max'],$sep,
-j:*[@key='avg'],$sep,
-j:*[@key='stdDev'],$sep,
-j:*[@key='sum'],$sep,
-j:*[@key='first'],$sep,
-j:*[@key='last'],$sep,
-j:*[@key='p50'],$sep,
-j:*[@key='p90'],$sep,
-j:*[@key='p95'],$sep,
-j:*[@key='p98'])" />
-		;
+	$fileTime,$sep,
+	$quot,$ibisVersion,$quot,$sep,
+	$quot,$adapter,$quot,$sep,
+	$quot,$object,$quot,$sep,
+	$quot,$name,$quot,$sep,
+	j:*[@key='count'],$sep,
+	j:*[@key='min'],$sep,
+	j:*[@key='max'],$sep,
+	j:*[@key='avg'],$sep,
+	j:*[@key='stdDev'],$sep,
+	j:*[@key='sum'],$sep,
+	j:*[@key='first'],$sep,
+	j:*[@key='last'],$sep,
+	j:*[@key='p50'],$sep,
+	j:*[@key='p90'],$sep,
+	j:*[@key='p95'],$sep,
+	j:*[@key='p98'])" />
+	;
 </xsl:template>
 
 </xsl:stylesheet>
