@@ -1,4 +1,5 @@
 target/
+/work
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
@@ -13,6 +14,4 @@ buildNumber.properties
 /.factorypath
 /.classpath
 /.project
-
-/target/
-/work
+FrankConfig.xsd
