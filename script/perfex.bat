@@ -69,8 +69,8 @@ set logDirWin=%logDirBaseWin%\%ibisVersion%
 del /q %logDirWin%\*
 
 echo i=%iteration%: building %ibisInstance% with framework version %ibisVersion%
-echo i=%iteration%: call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
-call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% -Dlog.level=DEBUG
+echo i=%iteration%: call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dff.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
+call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dff.version=%ibisVersion% -Dlog.dir=%logDirUnx% -Dlog.level=DEBUG
 
 rem do a call to the console, to wait for tomcat to startup
 :WaitForTomcatReady
