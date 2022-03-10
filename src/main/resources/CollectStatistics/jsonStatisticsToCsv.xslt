@@ -14,11 +14,11 @@
 	<xsl:variable name="adapter" select="$array[1]" />
 	<xsl:for-each select="j:map[j:string[@key='status']]">
 		<xsl:value-of select="fn:concat(
-$fileTime,$sep,
-$quot,$ibisVersion,$quot,$sep,
-$quot,$adapter,$quot,$sep,
-$quot,j:string[@key='status'],$quot,$sep,
-$quot,j:string[@key='error'],$quot)" />
+		$fileTime,$sep,
+		$quot,$ibisVersion,$quot,$sep,
+		$quot,$adapter,$quot,$sep,
+		$quot,j:string[@key='status'],$quot,$sep,
+		$quot,j:string[@key='error'],$quot)" />
 		;
 	</xsl:for-each>
 	<xsl:for-each select="j:map/j:map[@key='totalMessageProccessingTime']">
