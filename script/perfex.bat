@@ -19,21 +19,23 @@ set pauseBeforeShutdown=no
 
 
 
-set tomcat4ibis_dir=%workspace_dir%\tomcat4ibis
-set tomcat4ibis_start="%tomcat4ibis_dir%\tomcat4ibis.bat"
-set tomcat4ibis_stop="%tomcat4ibis_dir%\shutdown.bat"
+set tomcat4ibis_dir=%workspace_dir%\frank-runner
+set tomcat4ibis_start="%tomcat4ibis_dir%\start.bat"
+set tomcat4ibis_stop="%tomcat4ibis_dir%\stop.bat"
 rem setting application server type is required for versions 7.5-20191204.142425 .. 7.5-20191209.181404
 set tomcat4ibis_options=-Dapplication.server.type=TOMCAT -Dtesttool.enabled=false -Dlog.level=INFO
 
 rem The following settings have appropriate values when using tomcat4ibis
 rem location where ibis under test can be reached 
-set ibis_url=http://localhost/ibis
+set ibis_url=http://localhost
 rem location where larva of ibis under test can be reached
 set larva_url=%ibis_url%/larva/index.jsp
 rem output file of larva tests. The contents of the file are not used by the script
 set larva_outputfile=%workdir%\larvaout.txt
+rem no longer used - If there is only one scenarios root, we do not need an extra arg to select it
 set larva_scenariosrootdirectory=%workspace_dir%\%ibisInstance%\src\test\testtool\
-set larva_execute=%larva_scenariosrootdirectory%
+rem same as scenariosroot6.directory
+set larva_execute=C:/Users/martijn/PerformanceTest/ibis4pt/src/test/testtool
 set larva_waitbeforecleanup=100
 
 set iteration=0
@@ -67,8 +69,8 @@ set logDirWin=%logDirBaseWin%\%ibisVersion%
 del /q %logDirWin%\*
 
 echo i=%iteration%: building %ibisInstance% with framework version %ibisVersion%
-echo i=%iteration%: call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
-call %tomcat4ibis_start% %tomcat4ibis_options% -Dibis.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
+echo i=%iteration%: call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dff.version=%ibisVersion% -Dlog.dir=%logDirUnx% 
+call %tomcat4ibis_start% %tomcat4ibis_options% -Dproject.dir=%ibisInstance% -Dff.version=%ibisVersion% -Dlog.dir=%logDirUnx% -Dlog.level=DEBUG
 
 rem do a call to the console, to wait for tomcat to startup
 :WaitForTomcatReady
@@ -82,7 +84,7 @@ if %pauseBeforeExecutingTests%==yes pause
 
 for /l %%x in (1, 1, %numLarvaCycles%) do (
   echo i=%iteration%, j=%%x/%numLarvaCycles%: execute larva tests
-  curl -X POST %larva_url% -d "execute=%larva_execute%&scenariosrootdirectory=%larva_scenariosrootdirectory%&waitbeforecleanup=%larva_waitbeforecleanup%" > %larva_outputfile%
+  curl -X POST %larva_url% -d "execute=%larva_execute%&waitbeforecleanup=%larva_waitbeforecleanup%" > %larva_outputfile%
   if ERRORLEVEL 1 (
   	pause
   )
@@ -98,6 +100,7 @@ if %pauseBeforeShutdown%==yes pause
 call %tomcat4ibis_stop%
 echo i=%iteration%: waiting %tomcatShutdownWait% seconds for tomcat to shutdown version %ibisVersion%...
 timeout /t %tomcatShutdownWait%
+
 ENDLOCAL
 EXIT /B 0
 
